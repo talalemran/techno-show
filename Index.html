@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno Show</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .navbar, .footer {
+            background-color: #007bff;
+            color: white;
+        }
+        .product-card {
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Techno Show</a>
+        <div class="ml-auto">
+            <button class="btn btn-primary" id="cart-button">
+                Cart (<span id="cart-count">0</span>) - $<span id="cart-total">0.00</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Product List -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">$10.00</p>
+                        <button class="btn btn-primary add-to-cart" data-price="10.00">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for other products -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span>© 2025 Techno Show. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let cartCount = 0;
+        let cartTotal = 0;
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', event => {
+                const price = parseFloat(event.target.getAttribute('data-price'));
+                cartCount++;
+                cartTotal += price;
+                document.getElementById('cart-count').textContent = cartCount;
+                document.getElementById('cart-total').textContent = cartTotal.toFixed(2);
+            });
+        });
+    </script>
+</body>
+</html>
