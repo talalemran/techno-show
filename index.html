@@ -1,47 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techno Show</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techno Show</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="bg-primary text-white p-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <h1>Techno Show</h1>
-            <div class="cart">
-                <button type="button" class="btn btn-outline-light" id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+  <!-- Header -->
+  <header class="bg-gradient py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <h1 class="text-white mb-0">Techno Show</h1>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="#" class="nav-link text-white">Home</a></li>
+          <li class="nav-item"><a href="#products" class="nav-link text-white">Products</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link text-white">About Us</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link text-white">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon position-relative">
+        <a href="#cart" class="text-white text-decoration-none">
+          <i class="bi bi-cart"></i>
+          <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+          <span id="cart-subtotal" class="ms-2">$0.00</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Display -->
+  <section id="products" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Products</h2>
+      <div class="row g-4">
+        <!-- Product Card Template -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card h-100">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top product-image" alt="SonicBoom Wireless Headphones">
+            <div class="card-body">
+              <h5 class="card-title">SonicBoom Wireless Headphones</h5>
+              <p class="card-text">High-quality wireless headphones with noise cancellation.</p>
+              <p class="card-text text-primary fw-bold">$99.99</p>
+              <button class="btn btn-primary add-to-cart" data-name="SonicBoom Wireless Headphones" data-price="99.99">Add to Cart</button>
             </div>
+          </div>
         </div>
-    </header>
-
-    <main class="container mt-5">
-        <div class="row">
-            <!-- Products -->
-            <div class="col-md-4 mb-4" id="product-list">
-                <!-- Product 1 -->
-                <div class="card">
-                    <img src="product1.jpg" class="card-img-top" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Product 1</h5>
-                        <p class="card-text">$100</p>
-                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
+        <!-- Repeat for other products -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card h-100">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top product-image" alt="VisionPro 4K Monitor">
+            <div class="card-body">
+              <h5 class="card-title">VisionPro 4K Monitor</h5>
+              <p class="card-text">Ultra-sharp 4K monitor for professional use.</p>
+              <p class="card-text text-primary fw-bold">$299.99</p>
+              <button class="btn btn-primary add-to-cart" data-name="VisionPro 4K Monitor" data-price="299.99">Add to Cart</button>
             </div>
-            <!-- Add more products similarly -->
+          </div>
         </div>
-    </main>
+        <!-- Add remaining products similarly -->
+      </div>
+    </div>
+  </section>
 
-    <footer class="bg-dark text-white text-center p-3 mt-5">
-        <p>© 2025 Techno Show. All Rights Reserved.</p>
-    </footer>
+  <!-- Checkout Modal -->
+  <div id="cart" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Shopping Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="cart-items" class="list-group"></ul>
+          <div class="mt-3">
+            <p><strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span></p>
+            <p><strong>Tax:</strong> $<span id="checkout-tax">0.00</span></p>
+            <p><strong>Total:</strong> $<span id="checkout-total">0.00</span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p>&copy; 2023 Techno Show. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+      </div>
+      <p>Contact: info@technoshow.com</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 </body>
 </html>
