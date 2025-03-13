@@ -1,12 +1,39 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+  font-family: 'Roboto', sans-serif;
 }
 
-header {
-    background-color: #0d6efd; /* Modern blue color */
+.bg-gradient {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
 }
 
-footer {
-    background-color: #000;
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.1);
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+/* Loading Animation */
+@keyframes loading {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+.loading {
+  animation: loading 1s infinite alternate;
 }
