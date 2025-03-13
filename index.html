@@ -4,107 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techno Show</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f0f8ff;
-        }
-        .navbar, .footer {
-            background-color: #007bff;
-        }
-        .navbar-brand, .nav-link, .navbar-toggler-icon, .navbar-nav .nav-item .nav-link {
-            color: white !important;
-        }
-        .product-card {
-            transition: transform 0.3s;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-        }
-        .cart-popup {
-            position: fixed;
-            right: 20px;
-            top: 20px;
-            background: white;
-            padding: 10px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Techno Show</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
+    <header class="bg-primary text-white p-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>Techno Show</h1>
+            <div class="cart">
+                <button type="button" class="btn btn-outline-light" id="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Product List -->
-    <div class="container mt-5">
+    <main class="container mt-5">
         <div class="row">
-            <!-- Product 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card product-card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
+            <!-- Products -->
+            <div class="col-md-4 mb-4" id="product-list">
+                <!-- Product 1 -->
+                <div class="card">
+                    <img src="product1.jpg" class="card-img-top" alt="Product 1">
                     <div class="card-body">
                         <h5 class="card-title">Product 1</h5>
-                        <p class="card-text">$10.00</p>
-                        <button class="btn btn-primary add-to-cart" data-price="10.00">Add to Cart</button>
+                        <p class="card-text">$100</p>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
                     </div>
                 </div>
             </div>
-            <!-- Repeat similar blocks for other products -->
+            <!-- Add more products similarly -->
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <span>© 2025 Techno Show. All rights reserved.</span>
-        </div>
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <p>© 2025 Techno Show. All Rights Reserved.</p>
     </footer>
 
-    <!-- Cart Popup -->
-    <div class="cart-popup" id="cart-popup" style="display: none;">
-        Cart (<span id="cart-count">0</span>) - $<span id="cart-total">0.00</span>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        let cartCount = 0;
-        let cartTotal = 0;
-
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', event => {
-                const price = parseFloat(event.target.getAttribute('data-price'));
-                cartCount++;
-                cartTotal += price;
-                document.getElementById('cart-count').textContent = cartCount;
-                document.getElementById('cart-total').textContent = cartTotal.toFixed(2);
-                document.getElementById('cart-popup').style.display = 'block';
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
